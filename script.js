@@ -3,7 +3,7 @@
 		function add(a, b) {
 			return a + b;
 		};
-// Subtraction function
+	// Subtraction function
 		function subtract(a, b) {
 			return a - b;
 		};
@@ -26,8 +26,11 @@
 
 // Operations Variables:
 	// Operand 1
+		let firstOperand = null;
 	// Operation
+		let operation = null;
 	// Operand 2
+		let secondOperand = null;
 
 // OPERATE FUNCTION
 	// Takes an operation and 2 numbers, then calls
