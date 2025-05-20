@@ -12,17 +12,21 @@
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
-	border: 1px solid black;
 }
 
 html {
 	font-family: 'Noto Sans', sans-serif;
 	font-size: 10px;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: azure;
 }
 
 body {
 	height: 100vh;
-	width: 500px;
+	width: 50rem;
 	font-size: 4rem;
 	display: flex;
 	flex-direction: column;
@@ -33,51 +37,61 @@ body {
 .calculator-body {
 	display: flex;
 	flex-direction: column;
-	padding: 25px;
+	padding: 1rem;
 	width: 100%;
+	height: 80%;
+	background-color: lightgrey;
+	border: 1px solid darkgrey;
+	border-radius: 10px;
+}
+
+#display {
+	height: 10%;
+	border: 1px solid grey;
+	border-radius: 5px;
+	margin-bottom: 1rem;
 }
 
 .main-container {
 	display: flex;
 	width: 100%;
+	height: 100%;
 }
 
 .main-btns {
 	display: flex;
 	flex-direction: column;
-	width: 750px;
-}
-
-.side-btns {
-	display: flex;
-	flex-direction: column;
-	width: 150px;
+	width: 100%;
+	height: 100%;
 }
 
 .btn-row {
 	display: flex;
-	justify-content: space-evenly;
-	width: 300px;
+	width: 100%;
+	height: 20%;
 }
 
 .digit,
 .operator {
 	border-radius: 5px;
 	width: 25%;
-	height: 25px;
-	padding: 4px;
 	
 }
 
-#all-clear {
+#all-clear,
+#equal {
 	border: 1px solid grey;
 	border-radius: 5px;
-	width: 200px;
-	height: 50px;
+	width: 50%;
+	height: 100%;
 }
 
-#square {
-	width: 100px;
+#square,
+#zero,
+#point {
+	width: 25%;
+	height: 100%;
 	border-radius: 5px;
 }
+
 
