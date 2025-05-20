@@ -12,6 +12,7 @@
 	margin: 0px;
 	padding: 0px;
 	box-sizing: border-box;
+	border: none;
 }
 
 html {
@@ -75,15 +76,15 @@ body {
 .operator {
 	border-radius: 5px;
 	width: 25%;
-	
+	border: 1px solid grey;
 }
 
 #all-clear,
 #equal {
-	border: 1px solid grey;
 	border-radius: 5px;
 	width: 50%;
 	height: 100%;
+	border: 1px solid grey;
 }
 
 #square,
@@ -92,6 +93,9 @@ body {
 	width: 25%;
 	height: 100%;
 	border-radius: 5px;
+	border: 1px solid grey;
 }
 
-
+#equal {
+	background-color: orange;
+}
