@@ -1,8 +1,28 @@
 // Operator functions go here:
 	// Addition function
-	// Subtraction function
+		function add(a, b) {
+			return a + b;
+		};
+// Subtraction function
+		function subtract(a, b) {
+			return a - b;
+		};
+
 	// Multiplication function
+		function multiply(a, b) {
+			return a * b;
+		};
+
 	// Division function
+		function divide(a, b) {
+			return a / b;
+		};
+
+	// Square function
+		function square(a, b) {
+			return a ** b;
+		};
+
 
 // Operations Variables:
 	// Operand 1
