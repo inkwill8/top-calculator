@@ -59,11 +59,15 @@
 
 	function clearDisplay() {
 		display.value = '';
+		operatorBtns.forEach(btn => btn.classList.remove('active'));
 	};
 
 // Toggle the Active Button
 	function toggleClass(e) {
-		e.target.classList.toggle('active');
+		let activeButton = e.target;
+
+		operatorBtns.forEach(operatorBtn => operatorBtn == activeButton ? activeButton.classList.add('active') 
+		: operatorBtn.classList.remove('active')); 
 	};
 
 // EVENT LISTENERS
