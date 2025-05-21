@@ -54,11 +54,16 @@
 
 // DISPLAY FUNCTIONS
 	function appendToDisplay(e) {
-		display.value = e.target.textContent;
+		display.value += e.target.textContent;
 	};
 
 	function clearDisplay() {
 		display.value = '';
+	};
+
+// Toggle the Active Button
+	function toggleClass(e) {
+		e.target.classList.toggle('active');
 	};
 
 // EVENT LISTENERS
@@ -66,6 +71,7 @@
 	zeroBtn.addEventListener('click', appendToDisplay);
 	decimalBtn.addEventListener('click', appendToDisplay);
 	oneThruNineBtns.forEach(digit => digit.addEventListener('click', appendToDisplay));
+	operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener('click', toggleClass));
 
 	//squareBtn.addEventListener('click', );
 

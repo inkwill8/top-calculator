@@ -23,6 +23,10 @@ body {
 	align-items: center;
 }
 
+.active {
+	background-color: #f7c876;
+}
+
 .calculator-body {
 	display: flex;
 	flex-direction: column;
@@ -120,5 +124,9 @@ button:hover {
 }
 
 #equal:hover {
+	background-color: #f7c876;
+}
+
+.active {
 	background-color: #f7c876;
 }
