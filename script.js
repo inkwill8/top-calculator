@@ -52,13 +52,20 @@
 	const decimalBtn = document.querySelector('#point');
 	const equalBtn = document.querySelector('#equal');
 
-// POPULATE DISPLAY FUNCTION
+// DISPLAY FUNCTIONS
 	function appendToDisplay(e) {
 		display.value = e.target.textContent;
 	};
 
+	function clearDisplay() {
+		display.value = '';
+	};
+
 // EVENT LISTENERS
-	//clearBtn.addEventListener('click', clearDisplay);
+	clearBtn.addEventListener('click', clearDisplay);
 	zeroBtn.addEventListener('click', appendToDisplay);
-	squareBtn.addEventListener('click', appendToDisplay);
+	decimalBtn.addEventListener('click', appendToDisplay);
+	oneThruNineBtns.forEach(digit => digit.addEventListener('click', appendToDisplay));
+
+	//squareBtn.addEventListener('click', );
 

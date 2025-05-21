@@ -35,11 +35,13 @@ body {
 }
 
 #display {
-	height: 10%;
+	height: 20%;
 	border: 1px solid grey;
 	border-radius: 5px;
 	margin-bottom: 1rem;
 	pointer-events: none;
+	font-size: 6rem;
+	text-align: right;
 }
 
 .main-container {
