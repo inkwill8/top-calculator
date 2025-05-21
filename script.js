@@ -25,18 +25,12 @@
 
 
 // Operations Variables:
-	// Operand 1
-		let firstOperand = null;
-	// Operation
-		let operation = null;
-	// Operand 2
-		let secondOperand = null;
+	const operationVars = [
+		{firstOperand: null},
+		{operation: null},
+		{secondOperand: null}
+];
 
-// Assign Value to Operation Variables based on user input:
-	//function assignToVar(e, variable) {
-	//	e.target.textContent = variable;
-	//	return variable;
-//	};
 
 // OPERATE FUNCTION
 	// Takes an operation and 2 numbers, then calls
@@ -81,5 +75,5 @@
 	operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener('click', toggleClass));
 
 	// List of ELs that assign values to the null operation vars
-		oneThruNineBtns.forEach(digit => digit.addEventListener('click', assignToVar));
-		operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener('click', assignToVar));
+	//	oneThruNineBtns.forEach(digit => digit.addEventListener('click', assignToVar));
+	//	operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener('click', assignToVar));
