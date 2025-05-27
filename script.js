@@ -1,3 +1,16 @@
+// DOM Elements
+	const display = document.querySelector('#display');
+	const clearBtn = document.querySelector('#all-clear');
+	const squareBtn = document.querySelector('#square');
+	const operatorBtns = document.querySelectorAll('.operator');
+	const oneThruNineBtns = document.querySelectorAll('.digit');
+	const zeroBtn = document.querySelector('#zero');
+	const decimalBtn = document.querySelector('#point');
+	const equalBtn = document.querySelector('#equal');
+
+// Operations Variables:
+	const operationVars = [null, null];
+
 // Operator functions go here:
 	// Addition function
 		function add(a, b) {
@@ -23,32 +36,6 @@
 			return a ** b;
 		};
 
-
-// Operations Variables:
-	const operationVars = [
-		{firstOperand: null},
-		{operation: null},
-		{secondOperand: null}
-];
-
-
-// OPERATE FUNCTION
-	// Takes an operation and 2 numbers, then calls
-	// one of the above functions on those numbs.
-
-	//function operate(operation, firstOperand, secondOperand) {
-		//operation(firstOperand, secondOperand)  
-
-// DOM Elements
-	const display = document.querySelector('#display');
-	const clearBtn = document.querySelector('#all-clear');
-	const squareBtn = document.querySelector('#square');
-	const operatorBtns = document.querySelectorAll('.operator');
-	const oneThruNineBtns = document.querySelectorAll('.digit');
-	const zeroBtn = document.querySelector('#zero');
-	const decimalBtn = document.querySelector('#point');
-	const equalBtn = document.querySelector('#equal');
-
 // DISPLAY FUNCTIONS
 	function appendToDisplay(e) {
 		display.value += e.target.textContent;
@@ -58,6 +45,23 @@
 		display.value = '';
 		operatorBtns.forEach(btn => btn.classList.remove('active'));
 	};
+
+// USER INPUT FUNCTION
+	function saveUserInput(e) {
+		let input = +e.target.textContent;	
+		return input;
+	};
+
+// OPERATE FUNCTION
+	// Takes an operation and 2 numbers, then calls
+	// one of the above functions on those numbs.
+
+	function operate(e) {
+		let input = saveUserInput(e);
+		operationVars.splice(0, 2);
+		operationVars.push(input);
+			
+};
 
 // Toggle the Active Button
 	function toggleClass(e) {
@@ -72,8 +76,7 @@
 	zeroBtn.addEventListener('click', appendToDisplay);
 	decimalBtn.addEventListener('click', appendToDisplay);
 	oneThruNineBtns.forEach(digit => digit.addEventListener('click', appendToDisplay));
+	oneThruNineBtns.forEach(digit => digit.addEventListener('click', saveUserInput));
 	operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener('click', toggleClass));
+	equalBtn.addEventListener('click', operate);
 
-	// List of ELs that assign values to the null operation vars
-	//	oneThruNineBtns.forEach(digit => digit.addEventListener('click', assignToVar));
-	//	operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener('click', assignToVar));
