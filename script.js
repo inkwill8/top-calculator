@@ -9,7 +9,9 @@
 	const equalBtn = document.querySelector('#equal');
 
 // Operations Variables:
-	const operationVars = [null, null];
+	let firstOperand = null;
+	let secondOperand = 0;
+	let operation = null;
 
 // Operator functions go here:
 	// Addition function
@@ -48,8 +50,8 @@
 
 // USER INPUT FUNCTION
 	function saveUserInput(e) {
-		let input = +e.target.textContent;	
-		return input;
+		
+		firstOperand += e.target.textContent;
 	};
 
 // OPERATE FUNCTION
