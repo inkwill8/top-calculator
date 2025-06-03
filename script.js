@@ -9,8 +9,8 @@
 	const equalBtn = document.querySelector('#equal');
 
 // Operations Variables:
-	let firstOperand = null;
-	let secondOperand = 0;
+	let firstOperand = '';
+	let secondOperand = '';
 	let operation = null;
 
 // Operator functions go here:
@@ -45,13 +45,21 @@
 
 	function clearDisplay() {
 		display.value = '';
+		firstOperand = '';
+		secondOperand = '';
 		operatorBtns.forEach(btn => btn.classList.remove('active'));
 	};
 
-// USER INPUT FUNCTION
+// USER INPUT FUNCTIONS
 	function saveUserInput(e) {
+		let calculation = [];
 		
 		firstOperand += e.target.textContent;
+
+	// Condition statement: if operator class is 'active' attribute the
+	// next clicked button to secondOperand
+	
+
 	};
 
 // OPERATE FUNCTION
