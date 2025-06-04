@@ -83,8 +83,10 @@
 
 	function operate(e) {
 		let calc = [+firstOperand, +secondOperand];
-		
-};
+
+		let result = calc.reduce(operation);	
+		display.value = result;
+	};
 
 // Toggle the Active Button
 	function toggleClass(e) {
