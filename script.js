@@ -52,7 +52,7 @@
 	};
 
 // USER INPUT FUNCTIONS
-	function saveUserInput(e) {
+	function saveOperands(e) {
 		let activeOperator = document.querySelector('.operator.active');
 
 	// Condition statement: if operator class is 'active' attribute the
@@ -74,8 +74,7 @@
 			operation = multiply;
 		} else if (e.target.textContent === '/') {
 			operation = divide;
-		}
-		 
+		} 
 	};
 
 // OPERATE FUNCTION
@@ -100,7 +99,7 @@
 	zeroBtn.addEventListener('click', appendToDisplay);
 	decimalBtn.addEventListener('click', appendToDisplay);
 	oneThruNineBtns.forEach(digit => digit.addEventListener('click', appendToDisplay));
-	oneThruNineBtns.forEach(digit => digit.addEventListener('click', saveUserInput));
+	oneThruNineBtns.forEach(digit => digit.addEventListener('click', saveOperands));
 	operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener('click', toggleClass));
 	operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener('click', saveOperator));
 	equalBtn.addEventListener('click', operate);
