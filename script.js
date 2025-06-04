@@ -47,19 +47,28 @@
 		display.value = '';
 		firstOperand = '';
 		secondOperand = '';
+		operation = null;
 		operatorBtns.forEach(btn => btn.classList.remove('active'));
 	};
 
 // USER INPUT FUNCTIONS
 	function saveUserInput(e) {
-		let calculation = [];
-		
-		firstOperand += e.target.textContent;
+		let activeOperator = document.querySelector('.operator.active');
 
 	// Condition statement: if operator class is 'active' attribute the
 	// next clicked button to secondOperand
 	
+		if (activeOperator) {
+			secondOperand += e.target.textContent;
+		} else {
+			firstOperand += e.target.textContent;
+		}
+	};
 
+	function saveOperator(e) {
+		if (e.target.textContent === '+') {
+			operation = add;
+		} 
 	};
 
 // OPERATE FUNCTION
@@ -67,10 +76,8 @@
 	// one of the above functions on those numbs.
 
 	function operate(e) {
-		let input = saveUserInput(e);
-		operationVars.splice(0, 2);
-		operationVars.push(input);
-			
+		let calc = [+firstOperand, +secondOperand];
+		
 };
 
 // Toggle the Active Button
@@ -88,5 +95,6 @@
 	oneThruNineBtns.forEach(digit => digit.addEventListener('click', appendToDisplay));
 	oneThruNineBtns.forEach(digit => digit.addEventListener('click', saveUserInput));
 	operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener('click', toggleClass));
+	operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener('click', saveOperator));
 	equalBtn.addEventListener('click', operate);
 
