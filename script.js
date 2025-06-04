@@ -68,7 +68,14 @@
 	function saveOperator(e) {
 		if (e.target.textContent === '+') {
 			operation = add;
-		} 
+		} else if (e.target.textContent === '-') {
+			operation = subtract;
+		} else if (e.target.textContent === '*') {
+			operation = multiply;
+		} else if (e.target.textContent === '/') {
+			operation = divide;
+		}
+		 
 	};
 
 // OPERATE FUNCTION
