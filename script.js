@@ -1,7 +1,7 @@
 // DOM Elements
 	const display = document.querySelector('#display');
 	const clearBtn = document.querySelector('#all-clear');
-	const squareBtn = document.querySelector('#square');
+	const expBtn = document.querySelector('#exp');
 	const operatorBtns = document.querySelectorAll('.operator');
 	const oneThruNineBtns = document.querySelectorAll('.digit');
 	const zeroBtn = document.querySelector('#zero');
@@ -33,8 +33,8 @@
 			return a / b;
 		};
 
-	// Square function
-		function square(a, b) {
+	// Exponentiation function
+		function exponentiation(a, b) {
 			return a ** b;
 		};
 
@@ -74,6 +74,8 @@
 			operation = multiply;
 		} else if (e.target.textContent === '/') {
 			operation = divide;
+		} else if (e.target.textContent === '^') {
+			operation = exponentiation;
 		} 
 	};
 
