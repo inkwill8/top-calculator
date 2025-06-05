@@ -51,15 +51,18 @@
 		operatorBtns.forEach(btn => btn.classList.remove('active'));
 	};
 
-// USER INPUT FUNCTIONS
+// USER INPUT FUNCTION
 	function saveOperands(e) {
 		let activeOperator = document.querySelector('.operator.active');
+
 
 	// Condition statement: if operator class is 'active' attribute the
 	// next clicked button to secondOperand
 	
+
 		if (activeOperator) {
 			secondOperand += e.target.textContent;
+			display.value = secondOperand;
 		} else {
 			firstOperand += e.target.textContent;
 		}
