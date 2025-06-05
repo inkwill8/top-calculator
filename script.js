@@ -90,7 +90,7 @@
 		let calc = [+firstOperand, +secondOperand];
 
 		let result = calc.reduce(operation);	
-		display.value = result;
+		result === Infinity ? display.value = 'lol nice try' : display.value = result;
 	};
 
 // Toggle the Active Button

@@ -42,6 +42,7 @@ body {
 	pointer-events: none;
 	font-size: 6rem;
 	text-align: right;
+	padding: 1rem;
 }
 
 .main-container {
