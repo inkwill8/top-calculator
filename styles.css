@@ -131,3 +131,7 @@ button:hover {
 .active {
 	background-color: #f7c876;
 }
+
+#exp.active {
+	background-color: #f7c876;
+}

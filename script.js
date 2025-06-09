@@ -49,6 +49,7 @@
 		firstOperand = '';
 		secondOperand = '';
 		operation = null;
+		decimalClicked = false;
 		operatorBtns.forEach(btn => btn.classList.remove('active'));
 	};
 
@@ -80,22 +81,11 @@ function saveOperator(e) {
 	} 
 };
 
-function limitDecimal(e) {
-	if (firstOperand.includes('.')) {
-		decimalClicked = true;
-	}
-	
-	if (decimalClicked) {
-		decimalBtn.removeEventListener('click', saveOperands);
-		decimalBtn.removeEventListener('click', appendToDisplay);
-	}
-};
-
 // OPERATE FUNCTION
 	// Takes an operation and 2 numbers, then calls
 	// one of the above functions on those numbs.
 
-function operate(e) {
+function operate() {
     console.log('Before calculation:');
     console.log('firstOperand:', firstOperand, typeof firstOperand);
     console.log('secondOperand:', secondOperand, typeof secondOperand);
@@ -112,6 +102,7 @@ function operate(e) {
 // Toggle the Active Button
 	function toggleClass(e) {
 		let activeButton = e.target;
+		console.log(activeButton);
 
 		operatorBtns.forEach(operatorBtn => operatorBtn == activeButton ? activeButton.classList.add('active') 
 		: operatorBtn.classList.remove('active')); 
@@ -122,10 +113,10 @@ function operate(e) {
 	zeroBtn.addEventListener('click', appendToDisplay);
 	decimalBtn.addEventListener('click', appendToDisplay);
 	decimalBtn.addEventListener('click', saveOperands);
-	decimalBtn.addEventListener('click', limitDecimal);
 	oneThruNineBtns.forEach(digit => digit.addEventListener('click', appendToDisplay));
 	oneThruNineBtns.forEach(digit => digit.addEventListener('click', saveOperands));
 	operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener('click', toggleClass));
 	operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener('click', saveOperator));
+	expBtn.addEventListener('click', toggleClass);
 	equalBtn.addEventListener('click', operate);
 
