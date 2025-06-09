@@ -12,8 +12,9 @@
 	let firstOperand = '';
 	let secondOperand = '';
 	let operation = null;
+	let decimalClicked = false;
 
-// Operator functions go here:
+// OPERATOR FUNCTIONS
 	// Addition function
 		function add(a, b) {
 			return a + b;
@@ -52,21 +53,18 @@
 	};
 
 // USER INPUT FUNCTION
-	function saveOperands(e) {
-		let activeOperator = document.querySelector('.operator.active');
+function saveOperands(e) {
+    let activeOperator = document.querySelector('.operator.active');
 
-
-	// Condition statement: if operator class is 'active' attribute the
-	// next clicked button to secondOperand
-	
-
-		if (activeOperator) {
-			secondOperand += e.target.textContent;
-			display.value = secondOperand;
-		} else {
-			firstOperand += e.target.textContent;
-		}
-	};
+    if (activeOperator) {
+        secondOperand += e.target.textContent;
+        console.log('Building secondOperand:', secondOperand); // Add this
+		display.value = secondOperand;
+    } else {
+        firstOperand += e.target.textContent;
+        console.log('Building firstOperand:', firstOperand); // And this
+    }
+};
 
 	function saveOperator(e) {
 		if (e.target.textContent === '+') {
@@ -86,12 +84,19 @@
 	// Takes an operation and 2 numbers, then calls
 	// one of the above functions on those numbs.
 
-	function operate(e) {
-		let calc = [+firstOperand, +secondOperand];
-
-		let result = calc.reduce(operation);	
-		result === Infinity ? display.value = 'lol nice try' : display.value = result;
-	};
+function operate(e) {
+    console.log('Before calculation:');
+    console.log('firstOperand:', firstOperand, typeof firstOperand);
+    console.log('secondOperand:', secondOperand, typeof secondOperand);
+    
+    let calc = [+firstOperand, +secondOperand];
+    console.log('calc array:', calc); // Check the converted numbers
+    
+    let result = calc.reduce(operation);
+    console.log('result:', result);
+    
+    result === Infinity ? display.value = 'lol nice try' : display.value = parseFloat(result.toFixed(2));
+};
 
 // Toggle the Active Button
 	function toggleClass(e) {
@@ -105,6 +110,7 @@
 	clearBtn.addEventListener('click', clearDisplay);
 	zeroBtn.addEventListener('click', appendToDisplay);
 	decimalBtn.addEventListener('click', appendToDisplay);
+	decimalBtn.addEventListener('click', saveOperands);
 	oneThruNineBtns.forEach(digit => digit.addEventListener('click', appendToDisplay));
 	oneThruNineBtns.forEach(digit => digit.addEventListener('click', saveOperands));
 	operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener('click', toggleClass));
