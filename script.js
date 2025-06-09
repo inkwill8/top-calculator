@@ -66,19 +66,30 @@ function saveOperands(e) {
     }
 };
 
-	function saveOperator(e) {
-		if (e.target.textContent === '+') {
-			operation = add;
-		} else if (e.target.textContent === '-') {
-			operation = subtract;
-		} else if (e.target.textContent === '*') {
-			operation = multiply;
-		} else if (e.target.textContent === '/') {
-			operation = divide;
-		} else if (e.target.textContent === '^') {
-			operation = exponentiation;
-		} 
-	};
+function saveOperator(e) {
+	if (e.target.textContent === '+') {
+		operation = add;
+	} else if (e.target.textContent === '-') {
+		operation = subtract;
+	} else if (e.target.textContent === '*') {
+		operation = multiply;
+	} else if (e.target.textContent === '/') {
+		operation = divide;
+	} else if (e.target.textContent === '^') {
+		operation = exponentiation;
+	} 
+};
+
+function limitDecimal(e) {
+	if (firstOperand.includes('.')) {
+		decimalClicked = true;
+	}
+	
+	if (decimalClicked) {
+		decimalBtn.removeEventListener('click', saveOperands);
+		decimalBtn.removeEventListener('click', appendToDisplay);
+	}
+};
 
 // OPERATE FUNCTION
 	// Takes an operation and 2 numbers, then calls
@@ -111,6 +122,7 @@ function operate(e) {
 	zeroBtn.addEventListener('click', appendToDisplay);
 	decimalBtn.addEventListener('click', appendToDisplay);
 	decimalBtn.addEventListener('click', saveOperands);
+	decimalBtn.addEventListener('click', limitDecimal);
 	oneThruNineBtns.forEach(digit => digit.addEventListener('click', appendToDisplay));
 	oneThruNineBtns.forEach(digit => digit.addEventListener('click', saveOperands));
 	operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener('click', toggleClass));
