@@ -12,7 +12,8 @@
 	let firstOperand = '';
 	let secondOperand = '';
 	let operation = null;
-	let decimalClicked = false;
+	let firstDecimal = false;
+	let secondDecimal = false;
 
 // OPERATOR FUNCTIONS
 	// Addition function
@@ -48,8 +49,9 @@
 		display.value = '';
 		firstOperand = '';
 		secondOperand = '';
+		firstDecimal = false;
+		secondDecimal = false;
 		operation = null;
-		decimalClicked = false;
 		operatorBtns.forEach(btn => btn.classList.remove('active'));
 	};
 
@@ -81,25 +83,22 @@ function saveOperator(e) {
 	} 
 };
 
-function decimalTracker(e) {
-	if (firstOperand.includes('.') && operation == null) {
-		decimalClicked = true;
-	}
+function decimalTracker() {
+//	if (firstOperand.includes('.') && operation == null) {
+//		decimalClicked = true;
+//	}
 	
-	if (decimalClicked) {
-		decimalBtn.removeEventListener('click', saveOperands);
-		decimalBtn.removeEventListener('click', appendToDisplay);
-	}
+//	if (decimalClicked) {
+//		decimalBtn.removeEventListener('click', saveOperands);
+//		decimalBtn.removeEventListener('click', appendToDisplay);
+//	}
 	
-	if (operation != null && firstOperand !== '') {
-		decimalBtn.addEventListener('click', saveOperands);
-		decimalBtn.addEventListener('click', appendToDisplay);
-		decimalClicked = false;
-	}
+//	if (operation != null && firstOperand !== '') {
+//		decimalBtn.addEventListener('click', saveOperands);
+//		decimalBtn.addEventListener('click', appendToDisplay);
+//		decimalClicked = false;
+//	}
 	
-	if (secondOperand.includes('.')) {
-		decimalClicked = true;
-	}
 };
 
 // Toggle the Active Button
