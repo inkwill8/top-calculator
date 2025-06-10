@@ -81,6 +81,36 @@ function saveOperator(e) {
 	} 
 };
 
+function decimalTracker(e) {
+	if (firstOperand.includes('.') && operation == null) {
+		decimalClicked = true;
+	}
+	
+	if (decimalClicked) {
+		decimalBtn.removeEventListener('click', saveOperands);
+		decimalBtn.removeEventListener('click', appendToDisplay);
+	}
+	
+	if (operation != null && firstOperand !== '') {
+		decimalBtn.addEventListener('click', saveOperands);
+		decimalBtn.addEventListener('click', appendToDisplay);
+		decimalClicked = false;
+	}
+	
+	if (secondOperand.includes('.')) {
+		decimalClicked = true;
+	}
+};
+
+// Toggle the Active Button
+	function toggleClass(e) {
+		let activeButton = e.target;
+		console.log(activeButton);
+
+		operatorBtns.forEach(operatorBtn => operatorBtn == activeButton ? activeButton.classList.add('active') 
+		: operatorBtn.classList.remove('active')); 
+	};
+
 // OPERATE FUNCTION
 	// Takes an operation and 2 numbers, then calls
 	// one of the above functions on those numbs.
@@ -99,24 +129,15 @@ function operate() {
     result === Infinity ? display.value = 'lol nice try' : display.value = parseFloat(result.toFixed(2));
 };
 
-// Toggle the Active Button
-	function toggleClass(e) {
-		let activeButton = e.target;
-		console.log(activeButton);
-
-		operatorBtns.forEach(operatorBtn => operatorBtn == activeButton ? activeButton.classList.add('active') 
-		: operatorBtn.classList.remove('active')); 
-	};
-
 // EVENT LISTENERS
 	clearBtn.addEventListener('click', clearDisplay);
 	zeroBtn.addEventListener('click', appendToDisplay);
 	decimalBtn.addEventListener('click', appendToDisplay);
 	decimalBtn.addEventListener('click', saveOperands);
+	decimalBtn.addEventListener('click', decimalTracker);
 	oneThruNineBtns.forEach(digit => digit.addEventListener('click', appendToDisplay));
 	oneThruNineBtns.forEach(digit => digit.addEventListener('click', saveOperands));
 	operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener('click', toggleClass));
 	operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener('click', saveOperator));
 	expBtn.addEventListener('click', toggleClass);
 	equalBtn.addEventListener('click', operate);
-
