@@ -50,6 +50,7 @@
 		secondOperand = '';
 		decimalClicked = false;
 		operation = null;
+		decimalBtn.addEventListener('click', appendToDisplay);
 		operatorBtns.forEach(btn => btn.classList.remove('active'));
 	};
 
@@ -86,7 +87,7 @@ function decimalTracker() {
 		secondOperand.includes('.') && operation !== null) {
 		decimalClicked = true;
 	}
-	
+
 	if (decimalClicked) {
 		decimalBtn.removeEventListener('click', saveOperands);
 		decimalBtn.removeEventListener('click', appendToDisplay);
@@ -94,15 +95,9 @@ function decimalTracker() {
 	
 	if (operation !== null && firstOperand !== '') {
 		decimalClicked = false;
-
 		decimalBtn.addEventListener('click', saveOperands);
-		decimalBtn.addEventListener('click', appendToDisplay);
 	}
 
-	//if (secondOperand.includes('.') && operation !== null) {
-	//	decimalClicked = true;
-//	}
-	
 };
 
 // Toggle the Active Button
