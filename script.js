@@ -12,8 +12,7 @@
 	let firstOperand = '';
 	let secondOperand = '';
 	let operation = null;
-	let firstDecimal = false;
-	let secondDecimal = false;
+	let decimalClicked = false;
 
 // OPERATOR FUNCTIONS
 	// Addition function
@@ -49,8 +48,7 @@
 		display.value = '';
 		firstOperand = '';
 		secondOperand = '';
-		firstDecimal = false;
-		secondDecimal = false;
+		decimalClicked = false;
 		operation = null;
 		operatorBtns.forEach(btn => btn.classList.remove('active'));
 	};
@@ -84,20 +82,25 @@ function saveOperator(e) {
 };
 
 function decimalTracker() {
-//	if (firstOperand.includes('.') && operation == null) {
-//		decimalClicked = true;
-//	}
+	if (firstOperand.includes('.') && operation == null) {
+		decimalClicked = true;
+	}
 	
-//	if (decimalClicked) {
-//		decimalBtn.removeEventListener('click', saveOperands);
-//		decimalBtn.removeEventListener('click', appendToDisplay);
-//	}
+	if (decimalClicked) {
+		decimalBtn.removeEventListener('click', saveOperands);
+		decimalBtn.removeEventListener('click', appendToDisplay);
+	}
 	
-//	if (operation != null && firstOperand !== '') {
-//		decimalBtn.addEventListener('click', saveOperands);
-//		decimalBtn.addEventListener('click', appendToDisplay);
-//		decimalClicked = false;
-//	}
+	if (operation !== null && firstOperand !== '') {
+		decimalClicked = false;
+
+		decimalBtn.addEventListener('click', saveOperands);
+		decimalBtn.addEventListener('click', appendToDisplay);
+	}
+
+	if (secondOperand.includes('.') && operation !== null) {
+		decimalClicked = true;
+	}
 	
 };
 
@@ -136,7 +139,9 @@ function operate() {
 	decimalBtn.addEventListener('click', decimalTracker);
 	oneThruNineBtns.forEach(digit => digit.addEventListener('click', appendToDisplay));
 	oneThruNineBtns.forEach(digit => digit.addEventListener('click', saveOperands));
+	oneThruNineBtns.forEach(digit => digit.addEventListener('click', decimalTracker));
 	operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener('click', toggleClass));
 	operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener('click', saveOperator));
+	operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener('click', decimalTracker));
 	expBtn.addEventListener('click', toggleClass);
 	equalBtn.addEventListener('click', operate);
