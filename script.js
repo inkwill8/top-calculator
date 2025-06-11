@@ -44,14 +44,34 @@
 		display.value += e.target.textContent;
 	};
 
+// Disable all inputs after a result to prevent erroneous calculations from being made
+function disableInput() {
+	operatorBtns.forEach(operatorBtn => operatorBtn.removeEventListener('click', saveOperator));
+	decimalBtn.removeEventListener('click', appendToDisplay);
+	decimalBtn.removeEventListener('click', saveOperands);
+	zeroBtn.removeEventListener('click', appendToDisplay);
+	oneThruNineBtns.forEach(digit => digit.removeEventListener('click', appendToDisplay));
+	oneThruNineBtns.forEach(digit => digit.removeEventListener('click', saveOperands));
+};
+
+// Re-enable all inputs after clearing display
+function enableInput() {
+	operatorBtns.forEach(operatorBtn => operatorBtn.addEventListener('click', saveOperator));
+	decimalBtn.addEventListener('click', appendToDisplay);
+	decimalBtn.addEventListener('click', saveOperands);
+	zeroBtn.addEventListener('click', appendToDisplay);
+	oneThruNineBtns.forEach(digit => digit.addEventListener('click', appendToDisplay));
+	oneThruNineBtns.forEach(digit => digit.addEventListener('click', saveOperands));
+};
+
 	function clearDisplay() {
 		display.value = '';
 		firstOperand = '';
 		secondOperand = '';
 		decimalClicked = false;
 		operation = null;
-		decimalBtn.addEventListener('click', appendToDisplay);
 		operatorBtns.forEach(btn => btn.classList.remove('active'));
+		enableInput();
 	};
 
 // USER INPUT FUNCTION
@@ -60,11 +80,9 @@ function saveOperands(e) {
 
     if (activeOperator) {
         secondOperand += e.target.textContent;
-        console.log('Building secondOperand:', secondOperand); // Add this
 		display.value = secondOperand;
     } else {
         firstOperand += e.target.textContent;
-        console.log('Building firstOperand:', firstOperand); // And this
     }
 };
 
@@ -103,7 +121,6 @@ function decimalTracker() {
 // Toggle the Active Button
 	function toggleClass(e) {
 		let activeButton = e.target;
-		console.log(activeButton);
 
 		operatorBtns.forEach(operatorBtn => operatorBtn == activeButton ? activeButton.classList.add('active') 
 		: operatorBtn.classList.remove('active')); 
@@ -114,17 +131,12 @@ function decimalTracker() {
 	// one of the above functions on those numbs.
 
 function operate() {
-    console.log('Before calculation:');
-    console.log('firstOperand:', firstOperand, typeof firstOperand);
-    console.log('secondOperand:', secondOperand, typeof secondOperand);
-    
     let calc = [+firstOperand, +secondOperand];
-    console.log('calc array:', calc); // Check the converted numbers
     
     let result = calc.reduce(operation);
-    console.log('result:', result);
     
     result === Infinity ? display.value = 'lol nice try' : display.value = parseFloat(result.toFixed(2));
+	disableInput();
 };
 
 // EVENT LISTENERS
