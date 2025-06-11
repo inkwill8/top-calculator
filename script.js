@@ -82,7 +82,8 @@ function saveOperator(e) {
 };
 
 function decimalTracker() {
-	if (firstOperand.includes('.') && operation == null) {
+	if (firstOperand.includes('.') && operation == null || 
+		secondOperand.includes('.') && operation !== null) {
 		decimalClicked = true;
 	}
 	
@@ -98,9 +99,9 @@ function decimalTracker() {
 		decimalBtn.addEventListener('click', appendToDisplay);
 	}
 
-	if (secondOperand.includes('.') && operation !== null) {
-		decimalClicked = true;
-	}
+	//if (secondOperand.includes('.') && operation !== null) {
+	//	decimalClicked = true;
+//	}
 	
 };
 
